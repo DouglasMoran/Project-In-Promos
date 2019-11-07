@@ -4,5 +4,7 @@
     <!-- On boarding activity -->
     <string name="on_boarding_skip_btn">SALTAR</string>
     <string name="on_boarding_end_btn">FINALIZAR</string>
-
+    <string name="on_boarding_body_one"><b>¡Bienvenido a IN-PROMOS App!</b>\nA través de ésta aplicación puedes cotizar nuestros\nproductos y personalizarlos si lo deseas.</string>
+    <string name="on_boarding_body_two">Realiza las cotizaciones de los productos\nque tenemos disponibles desde tu Smartphone\nde una manera fácil e intuitiva.</string>
+    <string name="on_boarding_body_three">Haz tus propios diseños, personaliza productos a tu gusto sin necesidad de moverte de dónde estás, todo con una serie de simples pasos. </string>
 </resources>

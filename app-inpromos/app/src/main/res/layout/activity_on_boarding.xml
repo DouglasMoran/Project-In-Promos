@@ -55,15 +55,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
-                android:background="@color/colorPrimaryDark"
-                android:src="@drawable/shape_circle" />
+                android:src="@drawable/shape_circle"
+                android:tint="@color/colorAccentPrimary"/>
 
             <ImageView
                 android:id="@+id/indicatorTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
-                android:background="@color/colorPrimaryDark"
                 android:src="@drawable/shape_circle"
                 android:tint="@color/colorPrimaryDark"/>
 
@@ -72,7 +71,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
-                android:background="@color/colorPrimaryDark"
                 android:src="@drawable/shape_circle"
                 android:tint="@color/colorPrimaryDark"
                 android:layout_marginEnd="@dimen/_6sdp"/>
