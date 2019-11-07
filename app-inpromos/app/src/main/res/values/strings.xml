@@ -8,6 +8,8 @@
     <string name="on_boarding_body_two">Realiza las cotizaciones de los productos\nque tenemos disponibles desde tu Smartphone\nde una manera fácil e intuitiva.</string>
     <string name="on_boarding_body_three">Haz tus propios diseños, personaliza productos a tu gusto sin necesidad de moverte de dónde estás, todo con una serie de simples pasos. </string>
 
+    <!-- Orders fragment-->
+    <string name="orders_toolbar_title">Pedidos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_orders"
-        android:name="com.inpromos.app.OrdersFragment"
+        android:name="com.inpromos.app.fragments.OrdersFragment"
         android:label="fragment_orders"
         tools:layout="@layout/fragment_orders" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_help"
-        android:name="com.inpromos.app.HelpFragment"
+        android:name="com.inpromos.app.fragments.HelpFragment"
         android:label="fragment_help"
         tools:layout="@layout/fragment_help" />
 </navigation>
