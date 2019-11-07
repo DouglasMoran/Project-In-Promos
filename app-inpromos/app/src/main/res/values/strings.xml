@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">In Promos App</string>
+
+    <!-- On boarding activity -->
+    <string name="on_boarding_skip_btn">SALTAR</string>
+    <string name="on_boarding_end_btn">FINALIZAR</string>
+
 </resources>
