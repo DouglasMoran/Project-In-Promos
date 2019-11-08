@@ -6,12 +6,12 @@ import android.os.Bundle;
 
 import com.inpromos.app.R;
 
-public class CatalogueActivity extends AppCompatActivity {
+public class CustomizationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalogue);
+        setContentView(R.layout.activity_customization);
     }
 
 

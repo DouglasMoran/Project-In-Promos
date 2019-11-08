@@ -5,11 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:context=".activities.NewOrderActivity">
+    tools:context=".fragments.CatalogueFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/newOrderAbl"
+        android:id="@+id/catalogueAbl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
@@ -17,10 +16,10 @@
         app:liftOnScrollTargetViewId="@id/newOrderRecyclerView">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/newOrderToolbar"
+            android:id="@+id/catalogueToolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:title="@string/new_order_toolbar_title"
+            app:title="@string/catalogue_toolbar_title"
             app:titleTextAppearance="@style/ToolbarText"
             app:navigationIcon="@drawable/ic_arrow_back"/>
 
@@ -28,7 +27,7 @@
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/new_order_toolbar_body"
+            android:text="@string/catalogue_body"
             style="@style/BodyText"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_12sdp"
@@ -38,32 +37,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newOrderRecyclerView"
+        android:id="@+id/categoryRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:paddingBottom="@dimen/_12sdp"
-        android:clipToPadding="false"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addProductFab"
-        android:layout_width="wrap_content"
-        android:layout_height="84dp"
-        android:layout_margin="@dimen/_12sdp"
-        app:backgroundTint="@color/colorAccentThird"
-        app:layout_anchor="@id/newOrderAbl"
-        app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_add"
-        app:tint="@android:color/white" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/new_order_quote"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:enabled="false"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="@dimen/_12sdp"
-        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_6sdp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

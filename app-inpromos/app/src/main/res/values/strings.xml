@@ -10,14 +10,21 @@
 
     <!-- Orders fragment-->
     <string name="orders_toolbar_title">Pedidos</string>
-    
+
     <!-- Selector bottom sheet -->
     <string name="sheet_company">EMPRESARIAL</string>
     <string name="sheet_custom">PERSONALIZADO</string>
-    
+
     <!-- Add new order activity-->
     <string name="new_order_toolbar_title">Nuevo pedido</string>
     <string name="new_order_toolbar_body">Agrega todos los productos que desees en tu pedido para poder realizar una cotización.</string>
     <string name="new_order_quote">COTIZAR</string>
+
+    <!-- Catalogue activity -->
+    <string name="catalogue_toolbar_title">Catálogo</string>
+    <string name="catalogue_body">Elige una categoría para ver los productos disponibles a añadir en su pedido.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
