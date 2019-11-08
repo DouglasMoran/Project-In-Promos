@@ -1,6 +1,7 @@
 package com.inpromos.app.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,10 @@ import android.view.ViewGroup;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.inpromos.app.R;
+import com.inpromos.app.activities.NewOrderActivity;
 import com.inpromos.app.adapters.OrderAdapter;
 import com.inpromos.app.models.OrderModel;
+import com.inpromos.app.utils.ApplicationKeys;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +83,8 @@ public class OrdersFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("Debug", "Empresarial.");
                 bottomSheet.dismiss();
+                startNewOrderActivity(false);
+
             }
         });
 
@@ -88,6 +93,7 @@ public class OrdersFragment extends Fragment {
             public void onClick(View v) {
                 Log.d("Debug", "Personalizado.");
                 bottomSheet.dismiss();
+                startNewOrderActivity(true);
             }
         });
 
@@ -103,6 +109,12 @@ public class OrdersFragment extends Fragment {
     private void getReferences() {
         mFab = getActivity().findViewById(R.id.addOrderFab);
         mRecyclerView = getActivity().findViewById(R.id.ordersRecyclerView);
+    }
+
+    private void startNewOrderActivity(boolean isCustom) {
+        Intent intent = new Intent(getActivity(), NewOrderActivity.class);
+        intent.putExtra(ApplicationKeys.IS_CUSTOM_KEY, isCustom);
+        getActivity().startActivity(intent);
     }
 
 }
