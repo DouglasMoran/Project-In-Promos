@@ -12,7 +12,7 @@ public class CustomizationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customization);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccentThird));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccentPrimary));
 
     }
 

@@ -28,7 +28,7 @@
     <!-- Toolbar text appearance -->
     <style name="ToolbarText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/roboto_black</item>
     </style>
 

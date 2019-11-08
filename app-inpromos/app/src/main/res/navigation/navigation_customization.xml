@@ -19,4 +19,9 @@
         android:name="com.inpromos.app.fragments.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products" />
+    <fragment
+        android:id="@+id/customizationFragment"
+        android:name="com.inpromos.app.fragments.CustomizationFragment"
+        android:label="fragment_customization"
+        tools:layout="@layout/fragment_customization" />
 </navigation>

@@ -56,9 +56,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="#F6F6F6"
+            android:background="@color/colorAccentPrimary"
             android:padding="@dimen/_12sdp"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/productDescriptionTxt"
@@ -66,6 +66,7 @@
                 android:layout_height="wrap_content"
                 tools:text="@string/lorem_ipsum"
                 style="@style/BodyText"
+                android:textColor="@android:color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
@@ -75,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/product_customize_button"
-                android:textColor="@color/colorAccentPrimary"
+                android:textColor="@android:color/white"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:background="@color/colorAccentPrimary"
                 app:layout_constraintTop_toBottomOf="@id/productDescriptionTxt"

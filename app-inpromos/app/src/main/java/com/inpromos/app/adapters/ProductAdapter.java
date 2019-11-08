@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.button.MaterialButton;
@@ -16,6 +18,7 @@ import com.inpromos.app.R;
 import com.inpromos.app.models.ProductModel;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
@@ -53,6 +56,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 boolean isExpanded = product.isExpanded();
                 product.setExpanded(!isExpanded);
                 notifyItemChanged(position);
+            }
+        });
+
+        holder.mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(Objects.requireNonNull(((FragmentActivity) context)
+                        .getSupportFragmentManager().findFragmentById(R.id.customizationNavHostFragment)))
+                        .navigate(R.id.customizationFragment);
             }
         });
 
