@@ -30,12 +30,24 @@
 
     <!-- Customization fragment -->
     <string name="custom_toolbar_title">Nombre de producto</string>
+    <string name="customization_select_color">Seleccione el color</string>
+    <string name="customization_next_button">SIGUIENTE</string>
+    <string name="customization_load_image">Carga tu diseño</string>
+    <string name="customization_load_button">SUBIR</string>
+    <string name="customization_select_position">Selecciona la posición</string>
+    <string name="customization_return_button">ANTERIOR</string>
+    <string name="customization_select_size">Seleccione el tamaño</string>
+    <string name="customization_count_select">Seleccione la cantidad</string>
+    <string name="customization_finish_button">FINALIZAR</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur adipiscing elit pharetra taciti, nascetur leo posuere ultricies rutrum orci natoque suspendisse per, quisque laoreet tortor ridiculus semper conubia mattis non.</string>
-    <string name="customization_select_color">Seleccione el color</string>
-    <string name="customization_next_button">SIGUIENTE</string>
 
+    <array name="positions">
+        <item>Centro/Frente</item>
+        <item>Pecho/Izquierda</item>
+        <item>Pecho/Derecha</item>
+    </array>
 
 </resources>

@@ -9,4 +9,6 @@ public class ApplicationKeys {
 
     public static String CATEGORY_BUNDLE_KEY = "CATEGORY_BUNDLE_KEY";
 
+    public static int IMAGE_PICK_REQUEST_CODE = 1;
+
 }

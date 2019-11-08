@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,12 +20,14 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
     private List<ColorModel> colors;
     private Context context;
     private ImageView baseDrawable;
+    private TextView colorTextView;
     private int currentPosition;
 
-    public ColorAdapter(List<ColorModel> colors, Context context, ImageView baseDrawable) {
+    public ColorAdapter(List<ColorModel> colors, Context context, ImageView baseDrawable, TextView colorTextView) {
         this.colors = colors;
         this.context = context;
         this.baseDrawable = baseDrawable;
+        this.colorTextView = colorTextView;
     }
 
     @NonNull
@@ -46,6 +49,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
                 currentPosition = position;
                 //Switch base drawable color
                 baseDrawable.setColorFilter(context.getResources().getColor(color.getColor_resource()));
+                colorTextView.setText(color.getColor_name());
                 notifyDataSetChanged();
             }
         });
