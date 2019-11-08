@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProductsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/productsAbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:liftOnScroll="true"
+        app:liftOnScrollTargetViewId="@id/newOrderRecyclerView">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/productsToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:title="@string/products_toolbar_title"
+            app:titleTextAppearance="@style/ToolbarText"
+            app:navigationIcon="@drawable/ic_arrow_back" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:paddingBottom="@dimen/_12sdp"
+        android:clipToPadding="false"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         app:liftOnScroll="true"
-        app:liftOnScrollTargetViewId="@id/newOrderRecyclerView">
+        app:liftOnScrollTargetViewId="@id/categoryRecyclerView">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/catalogueToolbar"

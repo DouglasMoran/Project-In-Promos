@@ -13,7 +13,6 @@ import com.inpromos.app.utils.PagerEnum;
 public class OnBoardingAdapter extends PagerAdapter {
 
     private Context context;
-
     public OnBoardingAdapter(Context context) {
         this.context = context;
     }

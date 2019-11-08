@@ -9,5 +9,14 @@
         android:id="@+id/catalogueFragment"
         android:name="com.inpromos.app.fragments.CatalogueFragment"
         android:label="fragment_catalogue"
-        tools:layout="@layout/fragment_catalogue" />
+        tools:layout="@layout/fragment_catalogue" >
+        <action
+            android:id="@+id/action_catalogueFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.inpromos.app.fragments.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" />
 </navigation>

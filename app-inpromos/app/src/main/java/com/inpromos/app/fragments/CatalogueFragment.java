@@ -40,8 +40,12 @@ public class CatalogueFragment extends Fragment {
         getReferences();
         toolbarSetup();
 
-        generateTempData();
-        recyclerViewSetup();
+        if (categories.isEmpty()) {
+            generateTempData();
+            recyclerViewSetup();
+        } else {
+            recyclerViewSetup();
+        }
 
     }
 
@@ -52,7 +56,6 @@ public class CatalogueFragment extends Fragment {
     }
 
     private void toolbarSetup() {
-        getActivity().getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccentThird));
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

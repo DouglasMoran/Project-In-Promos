@@ -24,7 +24,12 @@
     <string name="catalogue_toolbar_title">Catálogo</string>
     <string name="catalogue_body">Elige una categoría para ver los productos disponibles a añadir en su pedido.</string>
 
+    <!-- Products fragment -->
+    <string name="products_toolbar_title">Producto</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur adipiscing elit pharetra taciti, nascetur leo posuere ultricies rutrum orci natoque suspendisse per, quisque laoreet tortor ridiculus semper conubia mattis non.</string>
+    <string name="product_customize_button">PERSONALIZAR</string>
 
 </resources>

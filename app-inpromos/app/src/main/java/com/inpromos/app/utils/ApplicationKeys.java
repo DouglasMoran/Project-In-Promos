@@ -7,4 +7,6 @@ public class ApplicationKeys {
 
     public static int PRODUCT_RESULT_CODE = 1;
 
+    public static String CATEGORY_BUNDLE_KEY = "CATEGORY_BUNDLE_KEY";
+
 }

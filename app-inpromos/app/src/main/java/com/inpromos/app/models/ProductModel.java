@@ -4,16 +4,19 @@ public class ProductModel {
 
     private int product_id;
     private String product_name;
-    private String prodyct_description;
+    private String product_description;
     private Double product_price;
     private int product_quantity;
+    private int product_category_id;
+    private boolean isExpanded;
 
-    public ProductModel(int product_id, String product_name, String prodyct_description, Double product_price, int product_quantity) {
+    public ProductModel(int product_id, String product_name, String product_description, Double product_price, int product_quantity, int product_category_id) {
         this.product_id = product_id;
         this.product_name = product_name;
-        this.prodyct_description = prodyct_description;
+        this.product_description = product_description;
         this.product_price = product_price;
         this.product_quantity = product_quantity;
+        this.product_category_id = product_category_id;
     }
 
     public ProductModel() {
@@ -35,12 +38,12 @@ public class ProductModel {
         this.product_name = product_name;
     }
 
-    public String getProdyct_description() {
-        return prodyct_description;
+    public String getProduct_description() {
+        return product_description;
     }
 
-    public void setProdyct_description(String prodyct_description) {
-        this.prodyct_description = prodyct_description;
+    public void setProduct_description(String product_description) {
+        this.product_description = product_description;
     }
 
     public Double getProduct_price() {
@@ -57,5 +60,21 @@ public class ProductModel {
 
     public void setProduct_quantity(int product_quantity) {
         this.product_quantity = product_quantity;
+    }
+
+    public int getProduct_category_id() {
+        return product_category_id;
+    }
+
+    public void setProduct_category_id(int product_category_id) {
+        this.product_category_id = product_category_id;
+    }
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
     }
 }

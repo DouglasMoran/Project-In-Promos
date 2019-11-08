@@ -46,12 +46,12 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
         return newProducts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mImage;
         private TextView mName, mCount;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mImage = itemView.findViewById(R.id.newProductImg);
