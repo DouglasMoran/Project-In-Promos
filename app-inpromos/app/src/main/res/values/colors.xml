@@ -7,4 +7,5 @@
     <color name="colorAccentThird">#DD1C78</color>
     <color name="colorTextGray">#9C9C9C</color>
     <color name="colorGrayButtons">#F2F2F2</color>
+    <color name="colorBlackTransparent">#99000000</color>
 </resources>
