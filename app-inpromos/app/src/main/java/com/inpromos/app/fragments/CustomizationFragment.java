@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +28,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.inpromos.app.R;
 import com.inpromos.app.adapters.ColorAdapter;
 import com.inpromos.app.adapters.SizeAdapter;
 import com.inpromos.app.models.ColorModel;
+import com.inpromos.app.models.ProductModel;
 import com.inpromos.app.models.SizeModel;
 import com.inpromos.app.utils.ApplicationKeys;
 
@@ -44,8 +50,9 @@ public class CustomizationFragment extends Fragment {
     private ColorAdapter mColorAdapter;
     private SizeAdapter mSizeAdapter;
     private Toolbar mToolbar;
-    private List<ColorModel> colors = new ArrayList<>();
+    private ProductModel mProduct;
     private List<SizeModel> sizes = new ArrayList<>();
+    private List<ColorModel> colors = new ArrayList<>();
     private ImageView
             mBaseImage,
             mLessButton,
@@ -84,20 +91,42 @@ public class CustomizationFragment extends Fragment {
         getReferences();
         toolbarSetup();
 
-        if (colors.isEmpty() || sizes.isEmpty()) {
-            colorRecyclerViewSetup();
-            sizeRecyclerViewSetup();
-        } else {
-            colorRecyclerViewSetup();
-            sizeRecyclerViewSetup();
-        }
+        //Fetch product
+        mProduct = (ProductModel) getArguments().getSerializable(ApplicationKeys.PRODUCT_BUNDLE_KEY);
+        getColors();
 
+        colorRecyclerViewSetup(colors);
+        sizeRecyclerViewSetup();
         positionSpinnerSetup();
         onClickListeners();
 
     }
 
-    private void colorRecyclerViewSetup() {
+    private void getColors() {
+        FirebaseDatabase.getInstance().getReference("colors").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot tmp : dataSnapshot.getChildren()) {
+                        ColorModel color = tmp.getValue(ColorModel.class);
+                        for (ColorModel productColor : mProduct.getColors()) {
+                            if (color.getColorId() == productColor.getColorId()) {
+                                colors.add(color);
+                            }
+                        }
+                        mColorAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void colorRecyclerViewSetup(List<ColorModel> colors) {
         mColorRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
         mColorAdapter = new ColorAdapter(colors, getActivity(), mTShirtFilterImage, mColorNameTextView);
         mColorRecyclerView.setAdapter(mColorAdapter);

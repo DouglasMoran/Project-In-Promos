@@ -2,6 +2,7 @@ package com.inpromos.app.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.inpromos.app.R;
 import com.inpromos.app.adapters.ProductAdapter;
 import com.inpromos.app.models.ProductModel;
@@ -26,14 +31,17 @@ public class ProductsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ProductAdapter mAdapter;
     private List<ProductModel> products = new ArrayList<>();
-    private List<ProductModel> thisProducts = new ArrayList<>();
     private Toolbar mToolbar;
     private int categoryId;
+    private View mainView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_products, container, false);
+        if (mainView == null) {
+            mainView = inflater.inflate(R.layout.fragment_products, container, false);
+        }
+        return mainView;
     }
 
     @Override
@@ -47,13 +55,44 @@ public class ProductsFragment extends Fragment {
         categoryId = getArguments().getInt(ApplicationKeys.CATEGORY_BUNDLE_KEY);
 
         recyclerViewSetup();
+        loadProducts();
 
     }
 
     private void recyclerViewSetup() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new ProductAdapter(thisProducts, getActivity());
+        mAdapter = new ProductAdapter(products, getActivity());
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private void loadProducts() {
+        FirebaseDatabase.getInstance().getReference(ApplicationKeys.PRODUCT_REFERENCE).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (products.size() > 0) {
+                    products.clear();
+                }
+
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot tmp : dataSnapshot.getChildren()) {
+                        ProductModel product = tmp.getValue(ProductModel.class);
+                        Log.d("Debug", product.getProductName());
+                        if (product.getCategoryId() == categoryId) {
+                            products.add(product);
+                            mAdapter.notifyDataSetChanged();
+                        }
+                        Log.d("Debug", products.toString());
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("Debug", databaseError.getMessage());
+
+            }
+        });
     }
 
     private void toolbarSetup() {

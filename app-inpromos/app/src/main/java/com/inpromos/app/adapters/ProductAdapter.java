@@ -1,6 +1,7 @@
 package com.inpromos.app.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.inpromos.app.R;
 import com.inpromos.app.models.ProductModel;
+import com.inpromos.app.utils.ApplicationKeys;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +26,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     private List<ProductModel> products;
     private Context context;
+    private Bundle bundle = new Bundle();
     private int selectedPosition;
 
     public ProductAdapter(List<ProductModel> products, Context context) {
@@ -62,9 +65,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Send product
+                bundle.putSerializable(ApplicationKeys.PRODUCT_BUNDLE_KEY, product);
+                //Navigate
                 NavHostFragment.findNavController(Objects.requireNonNull(((FragmentActivity) context)
                         .getSupportFragmentManager().findFragmentById(R.id.customizationNavHostFragment)))
-                        .navigate(R.id.customizationFragment);
+                        .navigate(R.id.customizationFragment, bundle);
             }
         });
 

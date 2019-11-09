@@ -1,8 +1,9 @@
 package com.inpromos.app.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductModel {
+public class ProductModel implements Serializable {
 
     private int productId;
     private String productName;
@@ -10,13 +11,13 @@ public class ProductModel {
     private String productImage;
     private String productMaterial;
     private String productDescription;
+    private int categoryId;
     private int productStock;
     private PriceModel productPrice;
-    private List<ColorModel> color;
-    private SubCategoryModel subcategory;
+    private List<ColorModel> colors;
     private boolean isExpanded;
 
-    public ProductModel(int productId, String productName, String productGenre, String productImage, String productMaterial, String productDescription, int productStock, PriceModel productPrice, List<ColorModel> color, SubCategoryModel subcategory) {
+    public ProductModel(int productId, String productName, String productGenre, String productImage, String productMaterial, String productDescription, int productStock, PriceModel productPrice, List<ColorModel> colors, int categoryId) {
         this.productId = productId;
         this.productName = productName;
         this.productGenre = productGenre;
@@ -25,8 +26,11 @@ public class ProductModel {
         this.productDescription = productDescription;
         this.productStock = productStock;
         this.productPrice = productPrice;
-        this.color = color;
-        this.subcategory = subcategory;
+        this.colors = colors;
+        this.categoryId = categoryId;
+    }
+
+    public ProductModel() {
     }
 
     public int getProductId() {
@@ -93,20 +97,12 @@ public class ProductModel {
         this.productPrice = productPrice;
     }
 
-    public List<ColorModel> getColor() {
-        return color;
+    public List<ColorModel> getColors() {
+        return colors;
     }
 
-    public void setColor(List<ColorModel> color) {
-        this.color = color;
-    }
-
-    public SubCategoryModel getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(SubCategoryModel subcategory) {
-        this.subcategory = subcategory;
+    public void setColors(List<ColorModel> colors) {
+        this.colors = colors;
     }
 
     public boolean isExpanded() {
@@ -117,4 +113,11 @@ public class ProductModel {
         isExpanded = expanded;
     }
 
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 }

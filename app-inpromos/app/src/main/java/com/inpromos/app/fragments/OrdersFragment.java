@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,7 @@ public class OrdersFragment extends Fragment {
     private OrderAdapter mAdapter;
     private List<OrderModel> orders = new ArrayList<>();
     private FloatingActionButton mFab;
+    private ConstraintLayout mEmptyView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +45,12 @@ public class OrdersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getReferences();
+
+        if (orders.isEmpty()) {
+            mEmptyView.setVisibility(View.VISIBLE);
+        } else {
+            mEmptyView.setVisibility(View.GONE);
+        }
 
         setRecyclerView();
 
@@ -101,6 +109,7 @@ public class OrdersFragment extends Fragment {
     private void getReferences() {
         mFab = getActivity().findViewById(R.id.addOrderFab);
         mRecyclerView = getActivity().findViewById(R.id.ordersRecyclerView);
+        mEmptyView = getActivity().findViewById(R.id.ordersEmptyView);
     }
 
     private void startNewOrderActivity(boolean isCustom) {
