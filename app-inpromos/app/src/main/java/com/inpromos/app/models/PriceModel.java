@@ -1,6 +1,8 @@
 package com.inpromos.app.models;
 
-public class PriceModel {
+import java.io.Serializable;
+
+public class PriceModel implements Serializable {
 
     private int priceId;
     private Double price;

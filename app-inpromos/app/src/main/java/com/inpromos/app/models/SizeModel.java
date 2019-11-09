@@ -1,6 +1,8 @@
 package com.inpromos.app.models;
 
-public class SizeModel {
+import java.io.Serializable;
+
+public class SizeModel implements Serializable {
 
     private int size_id;
     private String size_name;

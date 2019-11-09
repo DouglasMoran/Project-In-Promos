@@ -1,15 +1,31 @@
 package com.inpromos.app.models;
 
-public class QuotationProductModel {
+import android.graphics.Bitmap;
+import android.net.Uri;
+
+import java.io.Serializable;
+
+public class QuotationProductModel implements Serializable {
 
     private int productId;
     private int quantityItemSelected;
     private String quotationProductImage;
+    private byte[] quotationProductPreview;
 
     public QuotationProductModel(int productId, int quantityItemSelected, String quotationProductImage) {
         this.productId = productId;
         this.quantityItemSelected = quantityItemSelected;
         this.quotationProductImage = quotationProductImage;
+    }
+
+    public QuotationProductModel(int productId, int quantityItemSelected, String quotationProductImage, byte[] quotationProductPreview) {
+        this.productId = productId;
+        this.quantityItemSelected = quantityItemSelected;
+        this.quotationProductImage = quotationProductImage;
+        this.quotationProductPreview = quotationProductPreview;
+    }
+
+    public QuotationProductModel() {
     }
 
     public int getProductId() {
@@ -36,4 +52,11 @@ public class QuotationProductModel {
         this.quotationProductImage = quotationProductImage;
     }
 
+    public byte[] getQuotationProductPreview() {
+        return quotationProductPreview;
+    }
+
+    public void setQuotationProductPreview(byte[] quotationProductPreview) {
+        this.quotationProductPreview = quotationProductPreview;
+    }
 }

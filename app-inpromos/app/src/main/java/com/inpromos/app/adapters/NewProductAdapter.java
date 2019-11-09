@@ -1,6 +1,9 @@
 package com.inpromos.app.adapters;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +45,18 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
 
 
         for (ProductModel product : products) {
+            Log.d("debug", "name : " + product.getProductName());
             if (product.getProductId() == newProduct.getProductId()) {
+                Log.d("debug", "name : " + product.getProductName());
                 holder.mName.setText(product.getProductName());
             }
         }
 
         holder.mCount.setText(String.valueOf(newProduct.getQuantityItemSelected()));
-
+        //holder.mImage.setImageBitmap(BitmapFactory.decodeByteArray(newProduct.getQuotationProductPreview(), 0, newProduct.getQuotationProductPreview().length));
+        if (!newProduct.getQuotationProductImage().isEmpty()) {
+            holder.mImage.setImageURI(Uri.parse(newProduct.getQuotationProductImage()));
+        }
     }
 
     @Override

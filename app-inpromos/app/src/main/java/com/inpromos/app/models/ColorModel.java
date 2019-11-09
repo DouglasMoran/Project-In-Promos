@@ -1,6 +1,8 @@
 package com.inpromos.app.models;
 
-public class ColorModel {
+import java.io.Serializable;
+
+public class ColorModel implements Serializable {
 
     private int colorId;
     private String colorName;

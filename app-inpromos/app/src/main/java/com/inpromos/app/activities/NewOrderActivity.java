@@ -1,5 +1,6 @@
 package com.inpromos.app.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -54,7 +56,18 @@ public class NewOrderActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(getBaseContext(), CustomizationActivity.class), ApplicationKeys.PRODUCT_RESULT_CODE);
             }
         });
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == ApplicationKeys.PRODUCT_RESULT_CODE) {
+            QuotationProductModel tmp = (QuotationProductModel) data.getSerializableExtra(ApplicationKeys.QUOTATION_PRODUCT_KEY);
+            Log.d("debug", tmp.toString());
+            newProducts.add(tmp);
+            mAdapter.notifyDataSetChanged();
+        }
     }
 
     private void toolbarConfiguration() {

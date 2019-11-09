@@ -1,6 +1,8 @@
 package com.inpromos.app.models;
 
-public class CategoryModel {
+import java.io.Serializable;
+
+public class CategoryModel implements Serializable {
 
     private int categoryId;
     private String categoryName;

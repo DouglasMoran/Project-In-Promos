@@ -1,8 +1,9 @@
 package com.inpromos.app.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class QuotationModel {
+public class QuotationModel implements Serializable {
 
     private int quotationId;
     private String quotationDescription;
@@ -19,6 +20,8 @@ public class QuotationModel {
         this.userId = userId;
         this.products = products;
     }
+
+
 
     public int getQuotationId() {
         return quotationId;

@@ -4,6 +4,7 @@ package com.inpromos.app.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,7 +17,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,14 +37,22 @@ import com.inpromos.app.adapters.ColorAdapter;
 import com.inpromos.app.adapters.SizeAdapter;
 import com.inpromos.app.models.ColorModel;
 import com.inpromos.app.models.ProductModel;
+import com.inpromos.app.models.QuotationProductModel;
 import com.inpromos.app.models.SizeModel;
 import com.inpromos.app.utils.ApplicationKeys;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomizationFragment extends Fragment {
+public class CustomizationFragment extends Fragment implements Serializable {
 
+    private QuotationProductModel quotationProductModel = new QuotationProductModel();
+    private Bitmap imagePreview;
     private Uri imgUriPath;
     private RecyclerView mColorRecyclerView, mSizeRecyclerView;
     private ColorAdapter mColorAdapter;
@@ -65,7 +73,7 @@ public class CustomizationFragment extends Fragment {
             mTShirtLeftShoulderImage,
             mTShirtRightShoulderImage;
     private TextView mColorNameTextView;
-    private View mLayoutStepOne, mLayoutStepTwo, mLayoutStepThree;
+    private View mLayoutStepOne, mLayoutStepTwo, mLayoutStepThree, mTShirtCustomizationLayout;
     private EditText mCountText, mImagePathText;
     private MaterialButton mNextButton, mReturnColorButton, mNextSizeButton, mReturnSizeButton, mFinishButton, mLoadImageButton;
     private Spinner mPositionSpinner;
@@ -203,7 +211,42 @@ public class CustomizationFragment extends Fragment {
             }
         });
 
+        //Take screenshot
+        mFinishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent data = new Intent();
+                saveCustomizedProductImage();
+                //Transform bitmap to byte array
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                imagePreview.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                //Transform uri to byte array
+                quotationProductModel.setQuotationProductPreview(byteArray);
+                quotationProductModel.setQuantityItemSelected(Integer.parseInt(mCountText.getText().toString().trim()));
+                quotationProductModel.setProductId(mProduct.getProductId());
+                if (imgUriPath != null) {
+                    quotationProductModel.setQuotationProductImage(imgUriPath.toString());
+                }
+                //quotationProductModel.set
+                data.putExtra(ApplicationKeys.QUOTATION_PRODUCT_KEY, quotationProductModel);
+                getActivity().setResult(1, data);
+                getActivity().finish();
+            }
+        });
+
     }
+
+   /* @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            saveCustomizedProductImage();
+        } else {
+            Toast.makeText(getActivity(), "Permiso denegado.", Toast.LENGTH_LONG).show();
+        }
+    }*/
 
     private void pickImage() {
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -452,6 +495,7 @@ public class CustomizationFragment extends Fragment {
         mImagePathText = getActivity().findViewById(R.id.imagePathTxt);
         mPositionSpinner = getActivity().findViewById(R.id.positionSelectorSpinner);
         mLoadImageButton = getActivity().findViewById(R.id.loadImageBtn);
+        mTShirtCustomizationLayout = getActivity().findViewById(R.id.tShirtCustomizationLyt);
 
         //TShirt Layout image views
         mBaseImage = getActivity().findViewById(R.id.baseProductDrawableImg);
@@ -464,5 +508,12 @@ public class CustomizationFragment extends Fragment {
         mTShirtRightShoulderImage = getActivity().findViewById(R.id.baseShirtRightShoulderImg);
 
     }
+
+    private void saveCustomizedProductImage() {
+        mTShirtCustomizationLayout.setDrawingCacheEnabled(true);
+        imagePreview = Bitmap.createBitmap(mTShirtCustomizationLayout.getDrawingCache());
+        //mTShirtBackTopImage.setImageBitmap(bitmap);
+    }
+
 
 }

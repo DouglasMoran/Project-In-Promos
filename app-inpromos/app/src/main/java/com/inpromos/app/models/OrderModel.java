@@ -1,6 +1,8 @@
 package com.inpromos.app.models;
 
-public class OrderModel {
+import java.io.Serializable;
+
+public class OrderModel implements Serializable {
 
     private int order_id;
     private String order_title;
