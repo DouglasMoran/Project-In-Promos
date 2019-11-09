@@ -11,4 +11,7 @@ public class ApplicationKeys {
 
     public static int IMAGE_PICK_REQUEST_CODE = 1;
 
+    //FIRE BASE PATHS
+    public static String CATEGORY_REFERENCE = "category";
+
 }

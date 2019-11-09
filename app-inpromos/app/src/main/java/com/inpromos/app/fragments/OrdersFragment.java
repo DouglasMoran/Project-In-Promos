@@ -44,7 +44,6 @@ public class OrdersFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getReferences();
 
-        generateTempData();
         setRecyclerView();
 
         mFab.setOnClickListener(new View.OnClickListener() {
@@ -60,13 +59,6 @@ public class OrdersFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new OrderAdapter(orders, getActivity());
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-
-    private void generateTempData() {
-        for (int i = 1; i <= 5; i++) {
-            orders.add(new OrderModel(i, "Number " + i, "Date " + i, i));
-        }
     }
 
     private void showBottomSheet() {

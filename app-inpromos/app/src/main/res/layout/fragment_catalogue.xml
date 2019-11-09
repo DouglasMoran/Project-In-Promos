@@ -46,4 +46,12 @@
         android:paddingStart="@dimen/_6sdp"
         android:paddingEnd="@dimen/_6sdp"/>
 
+    <ProgressBar
+        android:id="@+id/catalogueProgressBar"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        app:layout_anchor="@id/categoryRecyclerView"
+        app:layout_anchorGravity="center"
+        android:visibility="gone"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
