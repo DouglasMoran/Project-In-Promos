@@ -48,6 +48,10 @@
         <item>Centro/Frente</item>
         <item>Pecho/Izquierda</item>
         <item>Pecho/Derecha</item>
+        <item>Espalda</item>
+        <item>Espalda/Arriba</item>
+        <item>Hombro/Izquierda</item>
+        <item>Hombro/Derecha</item>
     </array>
 
 </resources>

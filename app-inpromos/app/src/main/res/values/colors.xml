@@ -9,4 +9,12 @@
     <color name="colorTextGray">#9C9C9C</color>
     <color name="colorGrayButtons">#F2F2F2</color>
     <color name="colorBlackTransparent">#99000000</color>
+
+    <!-- Filter colors -->
+    <color name="colorRedFilter">#CCFF1100</color>
+    <color name="colorBlueFilter">#CC3F51B5</color>
+    <color name="colorGreenFilter">#CC4CAF50</color>
+    <color name="colorBlackFilter">#CC000000</color>
+    <color name="colorWhiteFilter">#CCFFFFFF</color>
+
 </resources>

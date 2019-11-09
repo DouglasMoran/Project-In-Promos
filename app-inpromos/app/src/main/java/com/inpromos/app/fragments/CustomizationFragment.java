@@ -46,14 +46,32 @@ public class CustomizationFragment extends Fragment {
     private Toolbar mToolbar;
     private List<ColorModel> colors = new ArrayList<>();
     private List<SizeModel> sizes = new ArrayList<>();
-    private ImageView mBaseImage, mLessButton, mPlusButton, mTshirtCenterImage, mTshirtStartChestImage, mTshirtEndChestImage;
+    private ImageView
+            mBaseImage,
+            mLessButton,
+            mPlusButton,
+            mTShirtCenterImage,
+            mTShirtStartImage,
+            mTShirtEndImage,
+            mTShirtFilterImage,
+            mTShirtBackTopImage,
+            mTShirtLeftShoulderImage,
+            mTShirtRightShoulderImage;
     private TextView mColorNameTextView;
     private View mLayoutStepOne, mLayoutStepTwo, mLayoutStepThree;
     private EditText mCountText;
     private TextInputEditText mImagePathText;
     private MaterialButton mNextButton, mReturnColorButton, mNextSizeButton, mReturnSizeButton, mFinishButton, mLoadImageButton;
     private Spinner mPositionSpinner;
-    private boolean isShirtCenter = false, isShirtStart = false, isShirtEnd = false;
+
+    //SWITCH BOOLEANS
+    private boolean isShirtCenter = false,
+            isShirtStart = false,
+            isShirtEnd = false,
+            isShirtBackTop = false,
+            isShirtLeftShoulder = false,
+            isShirtRightShoulder = false,
+            isShirtBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,7 +101,7 @@ public class CustomizationFragment extends Fragment {
 
     private void colorRecyclerViewSetup() {
         mColorRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 5));
-        mColorAdapter = new ColorAdapter(colors, getActivity(), mBaseImage, mColorNameTextView);
+        mColorAdapter = new ColorAdapter(colors, getActivity(), mTShirtFilterImage, mColorNameTextView);
         mColorRecyclerView.setAdapter(mColorAdapter);
     }
 
@@ -168,29 +186,83 @@ public class CustomizationFragment extends Fragment {
         startActivityForResult(intent, ApplicationKeys.IMAGE_PICK_REQUEST_CODE);
     }
 
-    private void defineBooleans(boolean isShirtCenter, boolean isShirtEnd, boolean isShirtStart) {
+    private void defineBooleans(boolean isShirtCenter, boolean isShirtEnd, boolean isShirtStart,
+                                boolean isShirtLeftShoulder, boolean isShirtRightShoulder,
+                                boolean isShirtBackTop, boolean isShirtBack) {
         this.isShirtCenter = isShirtCenter;
         this.isShirtEnd = isShirtEnd;
         this.isShirtStart = isShirtStart;
+        this.isShirtLeftShoulder = isShirtLeftShoulder;
+        this.isShirtRightShoulder = isShirtRightShoulder;
+        this.isShirtBackTop = isShirtBackTop;
+        this.isShirtBack = isShirtBack;
     }
 
     private void defineImageViews() {
         if (imgUriPath != null) {
             if (isShirtCenter) {
-                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_vector_t_shirt));
-                mTshirtEndChestImage.setImageDrawable(null);
-                mTshirtStartChestImage.setImageDrawable(null);
-                mTshirtCenterImage.setImageURI(imgUriPath);
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_front));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_front));
+                mTShirtEndImage.setImageDrawable(null);
+                mTShirtStartImage.setImageDrawable(null);
+                mTShirtBackTopImage.setImageDrawable(null);
+                mTShirtLeftShoulderImage.setImageDrawable(null);
+                mTShirtRightShoulderImage.setImageDrawable(null);
+                mTShirtCenterImage.setImageURI(imgUriPath);
             } else if (isShirtStart) {
-                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_vector_t_shirt));
-                mTshirtEndChestImage.setImageDrawable(null);
-                mTshirtStartChestImage.setImageURI(imgUriPath);
-                mTshirtCenterImage.setImageDrawable(null);
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_front));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_front));
+                mTShirtEndImage.setImageDrawable(null);
+                mTShirtStartImage.setImageURI(imgUriPath);
+                mTShirtBackTopImage.setImageDrawable(null);
+                mTShirtLeftShoulderImage.setImageDrawable(null);
+                mTShirtRightShoulderImage.setImageDrawable(null);
+                mTShirtCenterImage.setImageDrawable(null);
             } else if (isShirtEnd) {
-                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_vector_t_shirt));
-                mTshirtEndChestImage.setImageURI(imgUriPath);
-                mTshirtStartChestImage.setImageDrawable(null);
-                mTshirtCenterImage.setImageDrawable(null);
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_front));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_front));
+                mTShirtEndImage.setImageURI(imgUriPath);
+                mTShirtStartImage.setImageDrawable(null);
+                mTShirtBackTopImage.setImageDrawable(null);
+                mTShirtLeftShoulderImage.setImageDrawable(null);
+                mTShirtRightShoulderImage.setImageDrawable(null);
+                mTShirtCenterImage.setImageDrawable(null);
+            } else if (isShirtBack) {
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_back));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_back));
+                mTShirtEndImage.setImageDrawable(null);
+                mTShirtStartImage.setImageDrawable(null);
+                mTShirtBackTopImage.setImageDrawable(null);
+                mTShirtLeftShoulderImage.setImageDrawable(null);
+                mTShirtRightShoulderImage.setImageDrawable(null);
+                mTShirtCenterImage.setImageURI(imgUriPath);
+            } else if (isShirtBackTop) {
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_back));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_back));
+                mTShirtEndImage.setImageDrawable(null);
+                mTShirtStartImage.setImageDrawable(null);
+                mTShirtBackTopImage.setImageURI(imgUriPath);
+                mTShirtLeftShoulderImage.setImageDrawable(null);
+                mTShirtRightShoulderImage.setImageDrawable(null);
+                mTShirtCenterImage.setImageDrawable(null);
+            } else if (isShirtLeftShoulder) {
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_left_shoulder));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_left_shoulder));
+                mTShirtEndImage.setImageDrawable(null);
+                mTShirtStartImage.setImageDrawable(null);
+                mTShirtBackTopImage.setImageDrawable(null);
+                mTShirtLeftShoulderImage.setImageURI(imgUriPath);
+                mTShirtRightShoulderImage.setImageDrawable(null);
+                mTShirtCenterImage.setImageDrawable(null);
+            } else if (isShirtRightShoulder) {
+                mBaseImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_right_shoulder));
+                mTShirtFilterImage.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.vector_shirt_right_shoulder));
+                mTShirtEndImage.setImageDrawable(null);
+                mTShirtStartImage.setImageDrawable(null);
+                mTShirtBackTopImage.setImageDrawable(null);
+                mTShirtLeftShoulderImage.setImageDrawable(null);
+                mTShirtRightShoulderImage.setImageURI(imgUriPath);
+                mTShirtCenterImage.setImageDrawable(null);
             }
         }
     }
@@ -231,16 +303,85 @@ public class CustomizationFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0:
-                        defineBooleans(true, false, false);
+                    case 0: //Center front position
+                        defineBooleans(
+                                true,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false);
                         defineImageViews();
                         break;
-                    case 1:
-                        defineBooleans(false, false, true);
+                    case 1: //Left chest position
+                        defineBooleans(
+                                false,
+                                false,
+                                true,
+                                false,
+                                false,
+                                false,
+                                false);
                         defineImageViews();
                         break;
-                    case 2:
-                        defineBooleans(false, true, false);
+                    case 2: //Right chest position
+                        defineBooleans(
+                                false,
+                                true,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false);
+                        defineImageViews();
+                        break;
+                    case 3: //Back center position
+                        defineBooleans(
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                true
+                        );
+                        defineImageViews();
+                        break;
+                    case 4:
+                        defineBooleans(
+                                false,
+                                false,
+                                false,
+                                false,
+                                false,
+                                true,
+                                false
+                        );
+                        defineImageViews();
+                        break;
+                    case 5:
+                        defineBooleans(
+                                false,
+                                false,
+                                false,
+                                true,
+                                false,
+                                false,
+                                false
+                        );
+                        defineImageViews();
+                        break;
+                    default:
+                        defineBooleans(
+                                false,
+                                false,
+                                false,
+                                false,
+                                true,
+                                false,
+                                false
+                        );
                         defineImageViews();
                         break;
                 }
@@ -282,20 +423,24 @@ public class CustomizationFragment extends Fragment {
         mPositionSpinner = getActivity().findViewById(R.id.positionSelectorSpinner);
         mLoadImageButton = getActivity().findViewById(R.id.loadImageBtn);
 
-        //Layout image views
+        //TShirt Layout image views
         mBaseImage = getActivity().findViewById(R.id.baseProductDrawableImg);
-        mTshirtCenterImage = getActivity().findViewById(R.id.baseShirtCenterImg);
-        mTshirtStartChestImage = getActivity().findViewById(R.id.baseShirtStartChestImg);
-        mTshirtEndChestImage = getActivity().findViewById(R.id.baseShirtEndChestImg);
+        mTShirtFilterImage = getActivity().findViewById(R.id.baseProductDrawableFilterImg);
+        mTShirtCenterImage = getActivity().findViewById(R.id.baseShirtCenterImg);
+        mTShirtStartImage = getActivity().findViewById(R.id.baseShirtStartChestImg);
+        mTShirtEndImage = getActivity().findViewById(R.id.baseShirtEndChestImg);
+        mTShirtBackTopImage = getActivity().findViewById(R.id.baseShirtBackTopImg);
+        mTShirtLeftShoulderImage = getActivity().findViewById(R.id.baseShirtLeftShoulderImg);
+        mTShirtRightShoulderImage = getActivity().findViewById(R.id.baseShirtRightShoulderImg);
 
     }
 
     private void generateTempData() {
-        colors.add(new ColorModel("Color one", 1, R.color.colorAccentPrimary, ""));
-        colors.add(new ColorModel("Color two", 2, R.color.colorAccentSecondary, ""));
-        colors.add(new ColorModel("Color three", 3, R.color.colorAccentThird, ""));
-        colors.add(new ColorModel("Color four", 4, android.R.color.holo_red_dark, ""));
-        colors.add(new ColorModel("Color five", 5, android.R.color.holo_green_dark, ""));
+        colors.add(new ColorModel("Color one", 1, R.color.colorWhiteFilter, ""));
+        colors.add(new ColorModel("Color two", 2, R.color.colorBlackFilter, ""));
+        colors.add(new ColorModel("Color three", 3, R.color.colorRedFilter, ""));
+        colors.add(new ColorModel("Color four", 4, R.color.colorBlueFilter, ""));
+        colors.add(new ColorModel("Color five", 5, R.color.colorGreenFilter, ""));
 
         sizes.add(new SizeModel(1, "XS", 1.0, 1.0, 1.0));
         sizes.add(new SizeModel(2, "S", 1.0, 1.0, 1.0));

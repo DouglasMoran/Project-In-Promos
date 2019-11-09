@@ -43,48 +43,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
-            <!-- Image views -->
-            <ImageView
-                android:id="@+id/baseProductDrawableImg"
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_200sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:srcCompat="@drawable/ic_vector_t_shirt"
-                android:tint="@android:color/white"/>
-
-            <ImageView
-                android:id="@+id/baseShirtCenterImg"
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <ImageView
-                android:id="@+id/baseShirtEndChestImg"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/_50sdp"
-                android:layout_marginBottom="@dimen/_70sdp"/>
-
-            <ImageView
-                android:id="@+id/baseShirtStartChestImg"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginEnd="@dimen/_50sdp"
-                android:layout_marginBottom="@dimen/_70sdp"/>
+            <include
+                android:id="@+id/tShirtCustomizationLyt"
+                layout="@layout/layout_shirt_customization"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -120,8 +81,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:visibility="gone"/>
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
