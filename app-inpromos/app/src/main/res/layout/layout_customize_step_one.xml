@@ -15,7 +15,8 @@
         style="@style/ToolbarText"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/roboto_medium"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/colorsRecyclerView"

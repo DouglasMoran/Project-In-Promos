@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,18 +43,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final CategoryModel category = categories.get(position);
 
-        holder.mName.setText(category.getCategory_name());
+        holder.mName.setText(category.getCategoryName());
 
         //Image
         Glide.with(context)
-                .load(category.getCategory_img_path())
+                .load(category.getCategoryImgUrl())
                 .into(holder.mImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Get category
-                bundle.putInt(ApplicationKeys.CATEGORY_BUNDLE_KEY, category.getCategory_id());
+                bundle.putInt(ApplicationKeys.CATEGORY_BUNDLE_KEY, category.getCategoryId());
 
                 NavHostFragment.findNavController(Objects.requireNonNull(((FragmentActivity) context)
                         .getSupportFragmentManager().findFragmentById(R.id.customizationNavHostFragment)))

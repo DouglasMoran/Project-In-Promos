@@ -41,7 +41,6 @@ public class CatalogueFragment extends Fragment {
         toolbarSetup();
 
         if (categories.isEmpty()) {
-            generateTempData();
             recyclerViewSetup();
         } else {
             recyclerViewSetup();
@@ -68,30 +67,6 @@ public class CatalogueFragment extends Fragment {
     private void getReferences() {
         mRecyclerView = getActivity().findViewById(R.id.categoryRecyclerView);
         mToolbar = getActivity().findViewById(R.id.catalogueToolbar);
-    }
-
-    private void generateTempData() {
-        categories.add(new CategoryModel(
-                1,
-                "Gorras",
-                "https://image.freepik.com/foto-gratis/sombrero-lona-deporte-manera-blanco_1203-5371.jpg"));
-
-        categories.add(new CategoryModel(
-                2,
-                "Tazas",
-                "https://image.freepik.com/foto-gratis/surtido-plano-laico-taza-fondo-rosa_23-2148295652.jpg"));
-
-        categories.add(new CategoryModel(
-                3,
-                "Camisetas",
-                "https://image.freepik.com/foto-gratis/camisetas-negras-rojas-blancas_23-2147730483.jpg"
-        ));
-
-        categories.add(new CategoryModel(
-                4,
-                "Botellas",
-                "https://image.freepik.com/foto-gratis/mano-sujetando-termo-maqueta-sobre-fondo-amarillo_23-2148295782.jpg"
-        ));
     }
 
 }

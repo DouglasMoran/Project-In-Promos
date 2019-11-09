@@ -59,8 +59,7 @@ public class CustomizationFragment extends Fragment {
             mTShirtRightShoulderImage;
     private TextView mColorNameTextView;
     private View mLayoutStepOne, mLayoutStepTwo, mLayoutStepThree;
-    private EditText mCountText;
-    private TextInputEditText mImagePathText;
+    private EditText mCountText, mImagePathText;
     private MaterialButton mNextButton, mReturnColorButton, mNextSizeButton, mReturnSizeButton, mFinishButton, mLoadImageButton;
     private Spinner mPositionSpinner;
 
@@ -71,7 +70,7 @@ public class CustomizationFragment extends Fragment {
             isShirtBackTop = false,
             isShirtLeftShoulder = false,
             isShirtRightShoulder = false,
-            isShirtBack;
+            isShirtBack = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -286,12 +285,15 @@ public class CustomizationFragment extends Fragment {
                 String imgDecodableString = cursor.getString(columnIndex);
                 cursor.close();
                 mImagePathText.setText(imgDecodableString);
+                mPositionSpinner.setEnabled(true);
                 //positionSpinner.setVisibility(View.VISIBLE);
                 defineImageViews();
             }
     }
 
     private void positionSpinnerSetup() {
+        mPositionSpinner.setEnabled(false);
+
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(
                 getActivity(),
                 R.array.positions,

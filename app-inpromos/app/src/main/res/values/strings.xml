@@ -33,7 +33,7 @@
     <string name="customization_select_color">Seleccione el color</string>
     <string name="customization_next_button">SIGUIENTE</string>
     <string name="customization_load_image">Carga tu diseño</string>
-    <string name="customization_load_button">SUBIR</string>
+    <string name="customization_load_button">CARGAR</string>
     <string name="customization_select_position">Selecciona la posición</string>
     <string name="customization_return_button">ANTERIOR</string>
     <string name="customization_select_size">Seleccione el tamaño</string>

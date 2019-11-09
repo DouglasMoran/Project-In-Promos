@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/customization_load_image"
         style="@style/ToolbarText"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -27,28 +28,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginTop="@dimen/_12sdp"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/imagePathTil"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+    <EditText
+        android:id="@+id/imagePathTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12sdp"
+        android:ellipsize="end"
+        android:enabled="false"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/roboto_light"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/loadImageBtn"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/imagePathTxt"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:ellipsize="end"
-            android:enabled="false"
-            android:hint=""
-            android:textSize="@dimen/_10sdp"
-            android:fontFamily="@font/roboto_light"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:maxLines="1"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -56,6 +49,7 @@
         android:layout_height="wrap_content"
         android:text="@string/customization_select_position"
         style="@style/ToolbarText"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintTop_toBottomOf="@id/loadImageBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/_12sdp"/>
+        android:layout_marginTop="@dimen/_12sdp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/nextSelectSizeBtn"

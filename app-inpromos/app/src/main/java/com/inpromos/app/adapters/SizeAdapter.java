@@ -47,9 +47,9 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.ViewHolder> {
         });
 
         if (currentPosition == position) {
-            holder.mStroke.setVisibility(View.VISIBLE);
+            holder.mBg.setBackgroundTintList(context.getResources().getColorStateList(R.color.colorAccentSecondary));
         } else {
-            holder.mStroke.setVisibility(View.INVISIBLE);
+            holder.mBg.setBackgroundTintList(context.getResources().getColorStateList(R.color.colorPrimarySomeDark));
         }
     }
 
@@ -61,13 +61,13 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mName;
-        private View mStroke;
+        private View mBg;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mName = itemView.findViewById(R.id.sizeNameTxt);
-            mStroke = itemView.findViewById(R.id.sizeStrokeView);
+            mBg = itemView.findViewById(R.id.sizeBackgroundView);
 
         }
 
