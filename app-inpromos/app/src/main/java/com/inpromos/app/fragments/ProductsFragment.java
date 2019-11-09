@@ -46,14 +46,7 @@ public class ProductsFragment extends Fragment {
         assert getArguments() != null;
         categoryId = getArguments().getInt(ApplicationKeys.CATEGORY_BUNDLE_KEY);
 
-        if (products.isEmpty()) {
-            generateTempData();
-            recyclerViewSetup();
-        } else {
-            recyclerViewSetup();
-        }
-
-
+        recyclerViewSetup();
 
     }
 
@@ -75,80 +68,6 @@ public class ProductsFragment extends Fragment {
     private void getReferences() {
         mToolbar = getActivity().findViewById(R.id.productsToolbar);
         mRecyclerView = getActivity().findViewById(R.id.productRecyclerView);
-    }
-
-    private void generateTempData() {
-
-        products.add(new ProductModel(
-                1,
-                "Gorra 1",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                1));
-
-        products.add(new ProductModel(
-                2,
-                "Gorra 2",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                1));
-
-        products.add(new ProductModel(
-                3,
-                "Taza 1",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                2));
-
-        products.add(new ProductModel(
-                4,
-                "Taza 2",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                2));
-
-        products.add(new ProductModel(
-                5,
-                "Camiseta 1",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                3));
-
-        products.add(new ProductModel(
-                6,
-                "Camiseta 2",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                3));
-
-        products.add(new ProductModel(
-                7,
-                "Botella 1",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                4));
-
-        products.add(new ProductModel(
-                8,
-                "Botella 2",
-                getString(R.string.lorem_ipsum),
-                10.99,
-                0,
-                4));
-
-        for (ProductModel product : products) {
-            if (product.getProduct_category_id() == categoryId) {
-                thisProducts.add(product);
-            }
-        }
-
     }
 
 }

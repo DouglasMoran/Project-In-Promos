@@ -12,16 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.inpromos.app.R;
 import com.inpromos.app.models.ProductModel;
+import com.inpromos.app.models.QuotationModel;
+import com.inpromos.app.models.QuotationProductModel;
 
 import java.util.List;
 
 public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.ViewHolder> {
 
-    private List<ProductModel> newProducts;
+    private List<QuotationProductModel> newProducts;
+    private List<ProductModel> products;
     private Context context;
 
-    public NewProductAdapter(List<ProductModel> newProducts, Context context) {
+    public NewProductAdapter(List<QuotationProductModel> newProducts, List<ProductModel> products, Context context) {
         this.newProducts = newProducts;
+        this.products = products;
         this.context = context;
     }
 
@@ -34,10 +38,16 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ProductModel product = newProducts.get(position);
+        QuotationProductModel newProduct = newProducts.get(position);
 
-        holder.mName.setText(product.getProduct_name());
-        holder.mCount.setText(String.valueOf(product.getProduct_quantity()));
+
+        for (ProductModel product : products) {
+            if (product.getProductId() == newProduct.getProductId()) {
+                holder.mName.setText(product.getProductName());
+            }
+        }
+
+        holder.mCount.setText(String.valueOf(newProduct.getQuantityItemSelected()));
 
     }
 

@@ -42,8 +42,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final ProductModel product = products.get(position);
 
-        holder.mName.setText(product.getProduct_name());
-        holder.mDescription.setText(product.getProduct_description());
+        holder.mName.setText(product.getProductName());
+        holder.mDescription.setText(product.getProductDescription());
 
         //Expandable function
         boolean isExpanded = product.isExpanded();

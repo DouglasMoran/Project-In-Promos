@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.inpromos.app.R;
 import com.inpromos.app.adapters.NewProductAdapter;
 import com.inpromos.app.models.ProductModel;
+import com.inpromos.app.models.QuotationProductModel;
 import com.inpromos.app.utils.ApplicationKeys;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class NewOrderActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private NewProductAdapter mAdapter;
     private FloatingActionButton mFab;
-    private List<ProductModel> newProducts = new ArrayList<>();
+    private List<QuotationProductModel> newProducts = new ArrayList<>();
+    private List<ProductModel> products = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class NewOrderActivity extends AppCompatActivity {
 
     private void recyclerViewSetup() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mAdapter = new NewProductAdapter(newProducts, this);
+        mAdapter = new NewProductAdapter(newProducts, products, this);
         mRecyclerView.setAdapter(mAdapter);
     }
 

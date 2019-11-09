@@ -1,73 +1,112 @@
 package com.inpromos.app.models;
 
+import java.util.List;
+
 public class ProductModel {
 
-    private int product_id;
-    private String product_name;
-    private String product_description;
-    private Double product_price;
-    private int product_quantity;
-    private int product_category_id;
+    private int productId;
+    private String productName;
+    private String productGenre;
+    private String productImage;
+    private String productMaterial;
+    private String productDescription;
+    private int productStock;
+    private PriceModel productPrice;
+    private List<ColorModel> color;
+    private SubCategoryModel subcategory;
     private boolean isExpanded;
 
-    public ProductModel(int product_id, String product_name, String product_description, Double product_price, int product_quantity, int product_category_id) {
-        this.product_id = product_id;
-        this.product_name = product_name;
-        this.product_description = product_description;
-        this.product_price = product_price;
-        this.product_quantity = product_quantity;
-        this.product_category_id = product_category_id;
+    public ProductModel(int productId, String productName, String productGenre, String productImage, String productMaterial, String productDescription, int productStock, PriceModel productPrice, List<ColorModel> color, SubCategoryModel subcategory) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productGenre = productGenre;
+        this.productImage = productImage;
+        this.productMaterial = productMaterial;
+        this.productDescription = productDescription;
+        this.productStock = productStock;
+        this.productPrice = productPrice;
+        this.color = color;
+        this.subcategory = subcategory;
     }
 
-    public ProductModel() {
+    public int getProductId() {
+        return productId;
     }
 
-    public int getProduct_id() {
-        return product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
+    public String getProductName() {
+        return productName;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public String getProductGenre() {
+        return productGenre;
     }
 
-    public String getProduct_description() {
-        return product_description;
+    public void setProductGenre(String productGenre) {
+        this.productGenre = productGenre;
     }
 
-    public void setProduct_description(String product_description) {
-        this.product_description = product_description;
+    public String getProductImage() {
+        return productImage;
     }
 
-    public Double getProduct_price() {
-        return product_price;
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
     }
 
-    public void setProduct_price(Double product_price) {
-        this.product_price = product_price;
+    public String getProductMaterial() {
+        return productMaterial;
     }
 
-    public int getProduct_quantity() {
-        return product_quantity;
+    public void setProductMaterial(String productMaterial) {
+        this.productMaterial = productMaterial;
     }
 
-    public void setProduct_quantity(int product_quantity) {
-        this.product_quantity = product_quantity;
+    public String getProductDescription() {
+        return productDescription;
     }
 
-    public int getProduct_category_id() {
-        return product_category_id;
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
-    public void setProduct_category_id(int product_category_id) {
-        this.product_category_id = product_category_id;
+    public int getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(int productStock) {
+        this.productStock = productStock;
+    }
+
+    public PriceModel getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(PriceModel productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public List<ColorModel> getColor() {
+        return color;
+    }
+
+    public void setColor(List<ColorModel> color) {
+        this.color = color;
+    }
+
+    public SubCategoryModel getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(SubCategoryModel subcategory) {
+        this.subcategory = subcategory;
     }
 
     public boolean isExpanded() {
@@ -77,4 +116,5 @@ public class ProductModel {
     public void setExpanded(boolean expanded) {
         isExpanded = expanded;
     }
+
 }

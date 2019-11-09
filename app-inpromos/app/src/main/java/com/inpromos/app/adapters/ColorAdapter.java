@@ -1,6 +1,7 @@
 package com.inpromos.app.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,15 +42,15 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final ColorModel color = colors.get(position);
 
-        holder.mColor.setColorFilter(context.getResources().getColor(color.getColor_resource()));
+        holder.mColor.setColorFilter(Color.parseColor(color.getColorHexadecimal()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 currentPosition = position;
                 //Switch base drawable color
-                baseDrawable.setColorFilter(context.getResources().getColor(color.getColor_resource()));
-                colorTextView.setText(color.getColor_name());
+                baseDrawable.setColorFilter(Color.parseColor(color.getColorHexadecimal()));
+                colorTextView.setText(color.getColorName());
                 notifyDataSetChanged();
             }
         });

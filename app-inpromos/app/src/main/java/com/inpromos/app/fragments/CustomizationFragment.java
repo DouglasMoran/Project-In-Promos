@@ -85,7 +85,6 @@ public class CustomizationFragment extends Fragment {
         toolbarSetup();
 
         if (colors.isEmpty() || sizes.isEmpty()) {
-            generateTempData();
             colorRecyclerViewSetup();
             sizeRecyclerViewSetup();
         } else {
@@ -434,21 +433,6 @@ public class CustomizationFragment extends Fragment {
         mTShirtBackTopImage = getActivity().findViewById(R.id.baseShirtBackTopImg);
         mTShirtLeftShoulderImage = getActivity().findViewById(R.id.baseShirtLeftShoulderImg);
         mTShirtRightShoulderImage = getActivity().findViewById(R.id.baseShirtRightShoulderImg);
-
-    }
-
-    private void generateTempData() {
-        colors.add(new ColorModel("Color one", 1, R.color.colorWhiteFilter, ""));
-        colors.add(new ColorModel("Color two", 2, R.color.colorBlackFilter, ""));
-        colors.add(new ColorModel("Color three", 3, R.color.colorRedFilter, ""));
-        colors.add(new ColorModel("Color four", 4, R.color.colorBlueFilter, ""));
-        colors.add(new ColorModel("Color five", 5, R.color.colorGreenFilter, ""));
-
-        sizes.add(new SizeModel(1, "XS", 1.0, 1.0, 1.0));
-        sizes.add(new SizeModel(2, "S", 1.0, 1.0, 1.0));
-        sizes.add(new SizeModel(3, "M", 1.0, 1.0, 1.0));
-        sizes.add(new SizeModel(4, "L", 1.0, 1.0, 1.0));
-        sizes.add(new SizeModel(5, "XL", 1.0, 1.0, 1.0));
 
     }
 
